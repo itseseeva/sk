@@ -8,6 +8,9 @@ services:
     container_name: flight_search_frontend
     ports:
       - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt:ro
     restart: unless-stopped
 
 # Если в будущем появится бэкенд на Python:

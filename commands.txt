@@ -1,0 +1,19 @@
+Инструкция по запуску проекта "Global Flight Search":
+
+1. Откройте терминал (консоль).
+2. Перейдите в основную папку проекта:
+   cd e:\Users\username\Desktop\Skyskaner
+
+3. Активируйте ваше виртуальное окружение Python:
+   - На Windows (cmd/PowerShell):
+     venv\Scripts\activate
+   - На Git Bash / Linux:
+     source venv/Scripts/activate
+
+4. Перейдите в папку с фронтенд-приложением:
+   cd frontend
+
+5. Запустите локальный сервер разработки:
+   npm run dev
+
+6. Откройте в браузере ссылку, которая появится в консоли (обычно http://localhost:5173/)

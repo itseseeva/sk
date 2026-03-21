@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: flight_search_frontend
+    ports:
+      - "80:80"
+    restart: unless-stopped
+
+# Если в будущем появится бэкенд на Python:
+#  backend:
+#    build:
+#      context: ./backend
+#    container_name: flight_search_backend
+#    ports:
+#      - "5000:5000"
+#    restart: unless-stopped

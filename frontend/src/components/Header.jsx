@@ -1,11 +1,11 @@
 import React from 'react';
 import { Plane, Menu, User } from 'lucide-react';
 
-export default function Header() {
+export default function Header({ onGoHome }) {
   return (
     <header className="fixed top-0 left-0 right-0 h-16 bg-white shadow-sm z-50 flex items-center justify-between px-4 lg:px-8">
       {/* Logo Area */}
-      <div className="flex items-center gap-2 text-primary cursor-pointer hover:opacity-90">
+      <div onClick={onGoHome} className="flex items-center gap-2 text-primary cursor-pointer hover:opacity-90">
         <Plane size={28} className="fill-current" />
         <span className="text-xl font-bold tracking-tight">GlobalFlight</span>
       </div>

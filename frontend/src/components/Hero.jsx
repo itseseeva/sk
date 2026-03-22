@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchBar from './SearchBar';
 
-export default function Hero() {
+export default function Hero({ onSearch }) {
   return (
     <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 px-4 bg-sky-900 overflow-hidden">
       {/* Background Image Setup (Placeholder gradient used here to ensure load) */}
@@ -18,7 +18,7 @@ export default function Hero() {
           Compare cheap flights, hotels, and car hire to book the perfect trip.
         </p>
 
-        <SearchBar />
+        <SearchBar onSearch={onSearch} />
       </div>
     </section>
   );

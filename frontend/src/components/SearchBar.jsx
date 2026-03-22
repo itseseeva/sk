@@ -10,7 +10,7 @@ import { MapPin, Calendar, Users, Search } from 'lucide-react';
   <script src="https://example-skyscanner-partner-script.js"></script>
 */
 
-export default function SearchBar() {
+export default function SearchBar({ onSearch }) {
   const [tripType, setTripType] = useState('return');
 
   return (
@@ -99,7 +99,9 @@ export default function SearchBar() {
 
         {/* Search Button */}
         <div className="col-span-1 lg:col-span-1">
-          <button className="w-full h-full min-h-[50px] bg-primary hover:bg-primary-hover text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2 text-lg">
+          <button 
+            onClick={onSearch}
+            className="w-full h-full min-h-[50px] bg-primary hover:bg-primary-hover text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2 text-lg">
             <span>Search Flights</span>
             <Search size={20} />
           </button>

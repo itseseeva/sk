@@ -1,29 +1,126 @@
 import React from 'react';
-import DestinationCard from './DestinationCard';
+import { Flame } from 'lucide-react';
 
 const destinations = [
-  { city: 'Paris', country: 'France', price: 150, image: 'https://images.unsplash.com/photo-1502602898657-3e907626154b?auto=format&fit=crop&q=80&w=800' },
-  { city: 'Tokyo', country: 'Japan', price: 650, image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&q=80&w=800' },
-  { city: 'New York', country: 'USA', price: 420, image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&q=80&w=800' },
-  { city: 'London', country: 'UK', price: 210, image: 'https://images.unsplash.com/photo-1513635269975-5969336cd401?auto=format&fit=crop&q=80&w=800' },
-  { city: 'Rome', country: 'Italy', price: 180, image: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&q=80&w=800' },
-  { city: 'Dubai', country: 'UAE', price: 340, image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=800' },
+  {
+    id: 'dubai',
+    city: 'Dubai',
+    country: 'UAE',
+    price: 280,
+    tag: 'Hot deal',
+    image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    id: 'bangkok',
+    city: 'Bangkok',
+    country: 'Thailand',
+    price: 420,
+    tag: 'Popular',
+    image: 'https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    id: 'barcelona',
+    city: 'Barcelona',
+    country: 'Spain',
+    price: 95,
+    tag: null,
+    image: 'https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    id: 'tokyo',
+    city: 'Tokyo',
+    country: 'Japan',
+    price: 590,
+    tag: null,
+    image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    id: 'rome',
+    city: 'Rome',
+    country: 'Italy',
+    price: 79,
+    tag: 'Hot deal',
+    image: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    id: 'new_york',
+    city: 'New York',
+    country: 'USA',
+    price: 340,
+    tag: null,
+    image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&q=80&w=800',
+  },
 ];
 
-export default function Destinations() {
+function formatPrice(price) {
+  return '£' + price.toLocaleString('en-GB');
+}
+
+export default function Destinations({ onOpenArticle }) {
   return (
-    <section className="py-16 px-4 max-w-7xl mx-auto">
-      <div className="flex justify-between items-end mb-8">
-        <div>
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Popular right now</h2>
-          <p className="text-gray-600">Other travellers are loving these destinations. Search flights, hotels and car hire and join them on the adventure.</p>
+    <section className="py-20 lg:py-28 bg-white">
+      <div className="max-w-7xl mx-auto px-4">
+
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+          <div>
+            <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">Destinations</p>
+            <h2 className="section-title mb-2">Trending right now</h2>
+            <p className="section-subtitle max-w-lg">
+              Thousands of travellers are booking these destinations right now.
+            </p>
+          </div>
+          <a
+            href="#search"
+            className="btn-outline shrink-0 self-start md:self-auto"
+          >
+                        All destinations
+          </a>
         </div>
-      </div>
-      
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {destinations.map((dest, idx) => (
-          <DestinationCard key={idx} {...dest} />
-        ))}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {destinations.map((dest, idx) => (
+            <a
+              key={idx}
+              href={`/${dest.id}-post`}
+              onClick={(e) => {
+                e.preventDefault();
+                if (onOpenArticle) onOpenArticle(dest.id);
+              }}
+              className="group relative block rounded-2xl overflow-hidden aspect-[4/3] shadow-card hover:shadow-card-hover transition-all duration-400 hover:-translate-y-1"
+            >
+              {/* Фото */}
+              <img
+                src={dest.image}
+                alt={`${dest.city}, ${dest.country}`}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+
+              {/* Градиент снизу */}
+              <div className="absolute inset-0 bg-card-gradient" />
+
+              {/* Бейдж */}
+              {dest.tag && (
+                <div className="absolute top-4 left-4 flex items-center gap-1.5 bg-orange-500 text-white text-xs font-bold px-3 py-1.5 rounded-full">
+                  <Flame size={12} />
+                  {dest.tag}
+                </div>
+              )}
+
+              {/* Контент */}
+              <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between">
+                <div>
+                  <p className="text-white text-xl font-extrabold leading-tight">{dest.city}</p>
+                  <p className="text-white/70 text-sm font-medium">{dest.country}</p>
+                </div>
+                <div className="text-right">
+                      <p className="text-white/60 text-xs mb-0.5">from</p>
+                  <p className="text-white text-lg font-extrabold">{formatPrice(dest.price)}</p>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );

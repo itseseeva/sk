@@ -1,0 +1,32 @@
+# Игнорируемые файлы для Docker (копирование контекста сборки)
+
+# Различные IDE и логи
+.git
+.gitignore
+.vscode
+.idea
+*.log
+npm-debug.log*
+
+# Node.js
+node_modules
+dist
+dist-ssr
+build
+.husky
+
+# Python
+venv
+.venv
+__pycache__
+*.pyc
+
+# Докер файлы
+docker-compose.yml
+.dockerignore
+Dockerfile
+
+# Прочее
+.env
+.DS_Store
+README.md

@@ -1,62 +1,83 @@
 import React from 'react';
-import { Facebook, Twitter, Instagram, Youtube, Plane } from 'lucide-react';
+import { Star, ShieldCheck, Mail, MapPin } from 'lucide-react';
 
-export default function Footer() {
+export default function Footer({ onNavigate }) {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-slate-900 text-slate-300 py-12 lg:py-16">
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 border-b border-slate-700 pb-12">
-        {/* Brand */}
-        <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-2 text-white">
-            <Plane size={24} className="fill-current text-sky-400" />
-            <span className="text-xl font-bold tracking-tight">GlobalFlight</span>
+    <footer className="bg-slate-900 pt-16 pb-8 border-t border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          
+          {/* Brand & Trust */}
+          <div className="lg:col-span-1 space-y-6">
+            <div>
+              <span className="text-2xl font-black tracking-tight text-white block">Aviatop</span>
+              <p className="text-sm font-medium text-slate-400 mt-1">powered by Skyscanner</p>
+            </div>
           </div>
-          <p className="text-sm text-slate-400">
-            Making travel simpler, finding the best flights and saving you money since 2026.
+
+          {/* Corporate Links */}
+          <div className="space-y-6">
+            <h3 className="text-white font-bold tracking-wide uppercase text-sm">Company</h3>
+            <ul className="space-y-4">
+              <li>
+                <button onClick={() => onNavigate('/about')} className="text-slate-400 hover:text-primary transition-colors text-sm font-medium">About Us</button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('/contact')} className="text-slate-400 hover:text-primary transition-colors text-sm font-medium">Contact</button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Legal Links */}
+          <div className="space-y-6">
+            <h3 className="text-white font-bold tracking-wide uppercase text-sm">Legal</h3>
+            <ul className="space-y-4">
+              <li>
+                <button onClick={() => onNavigate('/privacy')} className="text-slate-400 hover:text-primary transition-colors text-sm font-medium">Privacy Policy</button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('/terms')} className="text-slate-400 hover:text-primary transition-colors text-sm font-medium">Terms of Service</button>
+              </li>
+              <li>
+                <div className="flex items-center gap-2 text-slate-400 text-sm font-medium">
+                  <ShieldCheck size={16} className="text-green-500" />
+                  <span>Secure Partners</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+           {/* Contact Info */}
+           <div className="space-y-6">
+            <h3 className="text-white font-bold tracking-wide uppercase text-sm">Headquarters</h3>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <MapPin size={18} className="text-slate-500 shrink-0 mt-0.5" />
+                <span className="text-slate-400 text-sm leading-relaxed">
+                  "OLIMP AIR" LLC<br/>
+                  Do‘stlik MFY, Shukrona ko'chasi<br/>
+                  17-uy, 10-xonadon<br/>
+                  Termiz, Uzbekistan
+                </span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail size={18} className="text-slate-500 shrink-0" />
+                <a href="mailto:support@olimpair.com" className="text-slate-400 hover:text-white transition-colors text-sm">support@olimpair.com</a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-slate-500 text-sm font-medium">
+            &copy; {currentYear} "OLIMP AIR" LLC. All rights reserved.
           </p>
-        </div>
-
-        {/* Links */}
-        <div>
-          <h4 className="text-white font-bold mb-4">About</h4>
-          <ul className="space-y-2 text-sm">
-            <li><a href="#" className="hover:text-sky-400 transition-colors">About Us</a></li>
-            <li><a href="#" className="hover:text-sky-400 transition-colors">Careers</a></li>
-            <li><a href="#" className="hover:text-sky-400 transition-colors">Press</a></li>
-            <li><a href="#" className="hover:text-sky-400 transition-colors">Sustainability</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="text-white font-bold mb-4">Partners</h4>
-          <ul className="space-y-2 text-sm">
-            <li><a href="#" className="hover:text-sky-400 transition-colors">Work With Us</a></li>
-            <li><a href="#" className="hover:text-sky-400 transition-colors">Airlines</a></li>
-            <li><a href="#" className="hover:text-sky-400 transition-colors">Travel Agents</a></li>
-            <li><a href="#" className="hover:text-sky-400 transition-colors">Affiliates</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="text-white font-bold mb-4">Legal</h4>
-          <ul className="space-y-2 text-sm">
-            <li><a href="#" className="hover:text-sky-400 transition-colors">Privacy Policy</a></li>
-            <li><a href="#" className="hover:text-sky-400 transition-colors">Terms of Service</a></li>
-            <li><a href="#" className="hover:text-sky-400 transition-colors">Cookie Policy</a></li>
-            <li><a href="#" className="hover:text-sky-400 transition-colors">Accessibility</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-sm text-slate-500">
-          © 2026 Global Flight Search. All rights reserved. Widget powered by Skyscanner.
-        </p>
-        <div className="flex gap-4">
-          <a href="#" className="text-slate-400 hover:text-white transition-colors"><Facebook size={20} /></a>
-          <a href="#" className="text-slate-400 hover:text-white transition-colors"><Twitter size={20} /></a>
-          <a href="#" className="text-slate-400 hover:text-white transition-colors"><Instagram size={20} /></a>
-          <a href="#" className="text-slate-400 hover:text-white transition-colors"><Youtube size={20} /></a>
+          <p className="text-slate-600 text-xs">
+            ИНН: 312 727 076 | Flight search engine powered by Skyscanner.
+          </p>
         </div>
       </div>
     </footer>

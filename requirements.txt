@@ -1,1 +1,6 @@
-# Python dependencies for future backend integration
+fastapi
+uvicorn[standard]
+sqlalchemy
+passlib[bcrypt]
+python-jose[cryptography]
+python-multipart

@@ -13,25 +13,21 @@ export const articles = {
     content: [
       { type: 'p', text: "Dubai is a city of superlatives. Home to the world's tallest building, the Burj Khalifa, and the largest shopping mall, it constantly pushes the boundaries of what is possible in architecture and lifestyle. Nowhere else on earth does modern ambition rise so steeply from the desert sand." },
       { type: 'p', text: "A mere fifty years ago, this bustling metropolis was little more than a quiet pearl-diving village on the edge of the Persian Gulf. Today, it stands as a testament to human ingenuity—a global hub for commerce, tourism, and luxury." },
-      { type: 'image_full', images: ["/articles/dubaimarina.jpg", "/articles/dubaimarina2.jpg", "/articles/dubaimarina3.jpg"], caption: "The stunning Dubai Marina at twilight." },
+      { type: 'image_full', images: ["/articles/dubaimarina.jpg", "/articles/dubaimarina2.jpg"], caption: "The stunning Dubai Marina at twilight." },
       { type: 'h2', text: "Architecture that Defies Logic" },
       { type: 'p', text: "Walking through Downtown Dubai feels like stepping into a science fiction film. The Burj Khalifa pierces the sky at a staggering 828 meters. Visitors can ascend to the 148th-floor observation deck, where the sprawling city below looks like a complex circuit board illuminated in the twilight." },
       { type: 'p', text: "Adjacent to this colossal tower is the Dubai Mall. It is not merely a shopping center; it is a mini-city. Within its walls, you will find an Olympic-sized ice rink, a massive indoor waterfall, and the breathtaking Dubai Aquarium, where sharks glide gracefully behind a three-story-high acrylic viewing panel, watched by thousands of mesmerized shoppers daily." },
       { type: 'quote', text: "Dubai is a place where if you can dream it, you can build it. It is the architectural playground of the 21st century.", author: "Zaha Hadid, Architect" },
       { type: 'h2', text: "Beyond the Glitz and Glamour" },
       { type: 'p', text: "While it is famous for its ultra-modern skyline, luxury shopping, and man-made islands like the Palm Jumeirah, Dubai's heart still beats in the traditional gold and spice souks of Deira. Crossing the Dubai Creek on a traditional wooden abra boat for just one dirham offers a glimpse into the city's humble beginnings." },
-      { type: 'image', url: "/articles/deirasouk.jpg", caption: "The bustling Gold Souk in Deira presents a stark contrast to the modern skyscrapers." },
       { type: 'p', text: "Walking through the narrow alleys of the Al Fahidi Historical Neighbourhood, you can admire traditional wind-tower architecture and visit local art galleries. It is in these quiet courtyards that the soul of old Arabia lingers softly in the air. Time moves differently here; the sterile cool of the malls is exchanged for the earthy warmth of sand-colored stone and the scent of roasted coffee." },
       { type: 'gallery', images: [
           "/articles/dubai1.jpg",
-          "/articles/dubai2.jpg",
-          "/articles/img_7.jpg",
-          "/articles/dubai3.jpg"
+          "/articles/dubai2.jpg"
       ]},
       { type: 'h2', text: "Culinary Heaven at the Crossroads of the World" },
       { type: 'p', text: "The culinary scene in Dubai is as diverse as its population. With over 200 nationalities calling the city home, you can literally taste the world without leaving the emirate. From Pakistani curries in Bur Dubai to fine-dining French cuisine overlooking the Burj Al Arab, the variety is staggering." },
       { type: 'p', text: "You can dine at Michelin-starred restaurants helmed by celebrity chefs like Gordon Ramsay and Nobu Matsuhisa, or enjoy authentic, inexpensive shawarma on the streets of Satwa. The fusion of Middle Eastern, Asian, and European flavors creates an unparalleled dining experience that caters to every palate and budget." },
-      { type: 'image_full', images: ["/articles/arabian.jpg"], caption: "Traditional Arabian dining under the stars." },
       { type: 'h2', text: "The Endless Desert" },
       { type: 'p', text: "No trip to Dubai is complete without venturing into the Arabian Desert. Just a 45-minute drive from the city center, the towering skyscrapers give way to rolling dunes of terracotta-colored sand. A sunset desert safari, complete with dune bashing in a 4x4, camel rides, and a traditional Bedouin-style dinner, is an absolute must." },
       { type: 'p', text: "For the adventurous, skydiving over the Palm Jumeirah offers the ultimate adrenaline rush, while those seeking tranquility can book a sunrise hot air balloon ride, watching the desert come alive as dawn breaks over the horizon." },
@@ -57,15 +53,13 @@ export const articles = {
     content: [
       { type: 'p', text: "Tokyo is not just a city; it is a sprawling, multi-layered organism. It can be overwhelming at first with its sea of neon lights, immense crowds, and labyrinthine train stations. Yet, scratch the surface and you'll find astonishing order, immaculate cleanliness, and quiet hidden valleys of deep tradition." },
       { type: 'p', text: "With over 37 million people in its broader metropolitan area, Tokyo shouldn't work as smoothly as it does. But precision, respect, and a deep-seated culture of consideration for others make it one of the safest and most efficient mega-cities on the planet." },
-      { type: 'image_full', images: ["/articles/img_12.jpg", "/articles/shibuya1.jpg", "/articles/shibuya2.jpg"], caption: "The mesmerizing Shibuya Scramble Crossing at night. Up to 3,000 people cross every two minutes." },
+      { type: 'image_full', images: ["/articles/img_12.jpg", "/articles/shibuya1.jpg"], caption: "The mesmerizing Shibuya Scramble Crossing at night. Up to 3,000 people cross every two minutes." },
       { type: 'h2', text: "Tradition Hidden in Plain Sight" },
       { type: 'p', text: "Just blocks away from the hyper-modern Shibuya crossing, where thousands of people seemingly walk through each other without colliding, lies the serene Meiji Shrine. Surrounded by a dense, tranquil forest of 100,000 trees, the contrast is jarring but defines the essence of Tokyo—a respectful balance of the old and the new." },
       { type: 'p', text: "In Asakusa, the ancient Senso-ji Temple draws millions of visitors breathing in the purifying incense. Here, women in exquisite silk kimonos walk alongside teenagers wearing cutting-edge Harajuku street fashion. The temple's massive red lantern at the Kaminarimon (Thunder Gate) is one of Tokyo's most iconic sights." },
       { type: 'gallery', images: [
           "/articles/img_13.jpg",
-          "/articles/img_14.jpg",
-          "/articles/tokyo6.jpg",
-          "/articles/img_16.jpg"
+          "/articles/img_14.jpg"
       ]},
       { type: 'h2', text: "Subcultures and Tech Havens" },
       { type: 'p', text: "If you are a fan of pop culture, anime, or electronics, Akihabara is your mecca. Dubbed 'Electric Town', its streets are lined with towering arcades, manga shops, and maid cafes. The visual and auditory stimulation here is turned up to eleven." },
@@ -96,15 +90,13 @@ export const articles = {
     content: [
       { type: 'p', text: "There is no skyline quite as recognizable or as emotionally charged as New York's. From the art deco masterpiece of the Chrysler Building to the expansive greenery of Central Park, NYC is a tapestry of distinct neighborhoods, each feeling like a completely different country." },
       { type: 'p', text: "The moment your feet hit the pavement in Manhattan, you can feel the vibration of the subway below and the ambition radiating from the people rushing past. It is a city that vibrates on a frequency of pure ambition and hustle." },
-      { type: 'image_full', images: ["/articles/img_19.jpg", "/articles/cabs2.jpg", "/articles/cabs3.jpg"], caption: "The classic yellow cabs navigating the canyon-like avenues." },
+      { type: 'image_full', images: ["/articles/img_19.jpg", "/articles/cabs2.jpg"], caption: "The classic yellow cabs navigating the canyon-like avenues." },
       { type: 'h2', text: "A Cultural Melting Pot" },
       { type: 'p', text: "New York is the undisputed arts capital of the Americas. Catch a Broadway show in Times Square, explore ancient Egyptian artifacts at the Metropolitan Museum of Art, or experience cutting-edge contemporary installations at the MoMA." },
       { type: 'p', text: "The diversity of the city is its greatest strength, offering every kind of cuisine, art, and music imaginable. Queens represents the most linguistically diverse place on Earth, with over 800 languages spoken. To visit Queens is to take a culinary tour of the globe for the price of a subway swipe." },
       { type: 'gallery', images: [
           "/articles/img_20.jpg",
-          "/articles/img_21.jpg",
-          "/articles/img_22.jpg",
-          "/articles/img_23.jpg"
+          "/articles/img_21.jpg"
       ]},
       { type: 'quote', text: "New York is not a city, it's a world. You can be whatever you want to be here.", author: "Iman" },
       { type: 'h2', text: "The Five Boroughs" },
@@ -139,7 +131,7 @@ export const articles = {
           "/articles/bangkok2.jpg"
       ]},
       { type: 'quote', text: "Bangkok is also a city of water. The Chao Phraya River and its network of canals (klongs) are the city's veins.", author: "Anthony Bourdain" },
-      { type: 'image_full', images: ["/articles/img_28.jpg", "/articles/river2.jpg", "/articles/river3.jpg"], caption: "The vibrant life along the Chao Phraya River." },
+      { type: 'image_full', images: ["/articles/img_28.jpg", "/articles/river2.jpg"], caption: "The vibrant life along the Chao Phraya River." },
       { type: 'h2', text: "The Undisputed Street Food Capital" },
       { type: 'p', text: "To truly understand Bangkok, you must taste it. From the legendary crab omelets at Jay Fai (which famously earned a Michelin star without compromising its street-side charm) to the steaming bowls of boat noodles at Victory Monument, the city is an absolute paradise for food lovers." },
       { type: 'p', text: "Don't be afraid to pull up a plastic stool, order a plate of Pad Kra Pao (basil pork), and join the locals. The rule of thumb: if the queue is long and the locals are eating there, it's going to be spectacular." },
@@ -195,7 +187,7 @@ export const articles = {
     readTime: "9 min read",
     content: [
       { type: 'p', text: "In Rome, every corner turned reveals a breathtaking piece of history. A bustling, chaotic modern capital surrounds ruins that have stood for over two millennia. It is a city that forces you to constantly look up, down, and around in utter awe. Layers of civilization—Roman, Medieval, Renaissance, and Baroque—are stacked on top of one another." },
-      { type: 'image_full', images: ["/articles/rome1.jpg", "/articles/colosseum2.jpg", "/articles/colosseum3.jpg"], caption: "The Colosseum bathed in golden evening light." },
+      { type: 'image_full', images: ["/articles/rome1.jpg", "/articles/colosseum2.jpg"], caption: "The Colosseum bathed in golden evening light." },
       { type: 'h2', text: "Living History" },
       { type: 'p', text: "The Colosseum stands as a colossal testament to the engineering prowess and the brutal entertainment of the ancient Romans. Walking through the nearby Roman Forum, among the fallen columns and triumphal arches, offers a visceral glimpse into the political epicenter of an empire that shaped the Western world." },
       { type: 'gallery', images: [

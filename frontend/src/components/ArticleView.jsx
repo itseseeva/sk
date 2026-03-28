@@ -140,7 +140,14 @@ export default function ArticleView({ articleId, onBack }) {
         return (
           <div key={idx} className="my-14 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 animate-fade-in-up">
             {block.images.map((img, i) => (
-              <img key={i} src={img} alt="Gallery" onError={(e) => console.error("Image failed to load:", e.target.src)} className="w-full h-64 md:h-80 object-cover rounded-2xl shadow-lg hover:scale-[1.02] transition-transform duration-500" loading="lazy" />
+              <div key={i} className="relative group rounded-2xl overflow-hidden w-full h-64 md:h-80 shadow-lg hover:scale-[1.02] transition-transform duration-500">
+                <AdminEditableImage 
+                  targetId={`${articleId}_content_${idx}_${i}`} 
+                  defaultSrc={img} 
+                  alt="Gallery" 
+                  className="w-full h-full object-cover" 
+                />
+              </div>
             ))}
           </div>
         );
@@ -257,8 +264,13 @@ export default function ArticleView({ articleId, onBack }) {
 
       {/* Massive Call to Action */}
       <FadeInBlock>
-        <div className="relative overflow-hidden bg-hero-gradient py-28 px-4 text-center mt-auto">
-          <div className="absolute inset-0 bg-[url('/articles/img_1.jpg')] bg-cover bg-center mix-blend-overlay opacity-20" />
+        <div className="relative overflow-hidden bg-hero-gradient py-28 px-4 text-center mt-auto group">
+          <AdminEditableImage 
+            targetId="article_cta_bg" 
+            defaultSrc="/articles/img_1.jpg" 
+            alt="CTA Background" 
+            className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-20" 
+          />
           <div className="relative z-10 max-w-3xl mx-auto">
             <h3 className="text-4xl md:text-6xl font-black text-white mb-6">Inspired to visit {article.title.split(':')[0]}?</h3>
             <p className="text-xl text-white/80 mb-10">Stop dreaming and start planning. Find the best flight deals right now seamlessly.</p>

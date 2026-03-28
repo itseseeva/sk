@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, Clock, Calendar, Heart, Share2, Info, MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
 import { articles } from '../data/articles';
+import AdminEditableImage from './AdminEditableImage';
 
 // Beautiful CSS-only fade-in animation
 function FadeInBlock({ children, delay = 0 }) {
@@ -15,7 +16,7 @@ function FadeInBlock({ children, delay = 0 }) {
 }
 
 // Photo Slider Component
-function FullWidthSlider({ images, caption }) {
+function FullWidthSlider({ images, caption, articleId, blockIdx }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -35,16 +36,15 @@ function FullWidthSlider({ images, caption }) {
     <figure className="my-16 w-[100vw] ml-[calc(50%-50vw)] animate-fade-in-up group flex flex-col items-center">
       <div className="relative w-full h-[50vh] md:h-[70vh] overflow-hidden bg-slate-900">
         {isArray ? images.map((img, i) => (
-          <img 
+          <AdminEditableImage 
             key={i} 
-            src={img} 
+            targetId={`${articleId}_content_${blockIdx}_${i}`}
+            defaultSrc={img} 
             alt={caption} 
-            onError={(e) => console.error("Image failed to load:", e.target.src)} 
             className={`absolute inset-0 w-full h-full object-cover shadow-2xl transition-opacity duration-1000 ${i === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`} 
-            loading="lazy" 
           />
         )) : (
-          <img src={images} alt={caption} onError={(e) => console.error("Image failed to load:", e.target.src)} className="w-full h-full object-cover shadow-2xl" loading="lazy" />
+          <AdminEditableImage targetId={`${articleId}_content_${blockIdx}`} defaultSrc={images} alt={caption} className="w-full h-full object-cover shadow-2xl" />
         )}
         
         {isArray && images.length > 1 && (
@@ -130,12 +130,12 @@ export default function ArticleView({ articleId, onBack }) {
       case 'image':
         return (
           <figure key={idx} className="my-14 text-center animate-fade-in-up">
-            <img src={block.url} alt={block.caption} onError={(e) => console.error("Image failed to load:", e.target.src)} className="w-full h-auto object-cover rounded-3xl shadow-xl border border-gray-100/50 hover:shadow-2xl transition-shadow duration-500" loading="lazy" />
+            <AdminEditableImage targetId={`${articleId}_content_${idx}`} defaultSrc={block.url} alt={block.caption} className="w-full h-auto object-cover rounded-3xl shadow-xl border border-gray-100/50 hover:shadow-2xl transition-shadow duration-500" />
             {block.caption && <figcaption className="text-gray-500 text-sm mt-4 font-medium italic">{block.caption}</figcaption>}
           </figure>
         );
       case 'image_full':
-        return <FullWidthSlider key={idx} images={block.images || block.url} caption={block.caption} />;
+        return <FullWidthSlider key={idx} images={block.images || block.url} caption={block.caption} articleId={articleId} blockIdx={idx} />;
       case 'gallery':
         return (
           <div key={idx} className="my-14 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 animate-fade-in-up">
@@ -188,10 +188,10 @@ export default function ArticleView({ articleId, onBack }) {
 
       {/* Hero Parallax Image */}
       <div className="relative w-full h-[70vh] md:h-[85vh] overflow-hidden group">
-        <img 
-          src={article.heroImage} 
+        <AdminEditableImage 
+          targetId={`${articleId}_hero`}
+          defaultSrc={article.heroImage} 
           alt={article.title} 
-          onError={(e) => console.error("Image failed to load:", e.target.src)}
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-[20s] ease-linear group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-[#0f172a]" />

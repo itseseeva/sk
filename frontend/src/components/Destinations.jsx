@@ -1,5 +1,6 @@
 import React from 'react';
 import { Flame } from 'lucide-react';
+import AdminEditableImage from './AdminEditableImage';
 
 const destinations = [
   {
@@ -89,11 +90,11 @@ export default function Destinations({ onOpenArticle }) {
               className="group relative block rounded-2xl overflow-hidden aspect-[4/3] shadow-card hover:shadow-card-hover transition-all duration-400 hover:-translate-y-1"
             >
               {/* Фото */}
-              <img
-                src={dest.image}
+              <AdminEditableImage
+                targetId={`dest_${dest.id}`}
+                defaultSrc={dest.image}
                 alt={`${dest.city}, ${dest.country}`}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy"
               />
 
               {/* Градиент снизу */}

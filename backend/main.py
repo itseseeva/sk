@@ -1,8 +1,12 @@
-from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi import FastAPI, Depends, HTTPException, status, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordRequestForm
+from fastapi.staticfiles import StaticFiles
 from datetime import timedelta
+import shutil
+import os
+import uuid
 
 import models, schemas, auth
 from database import engine, get_db
@@ -10,6 +14,9 @@ from database import engine, get_db
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Skyscanner Flight Search API")
+
+os.makedirs("data/uploads", exist_ok=True)
+app.mount("/uploads", StaticFiles(directory="data/uploads"), name="uploads")
 
 app.add_middleware(
     CORSMiddleware,
@@ -51,3 +58,37 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
 @app.get("/me", response_model=schemas.UserResponse)
 def read_users_me(current_user: models.User = Depends(auth.get_current_user)):
     return current_user
+
+@app.get("/images", response_model=dict[str, str])
+def get_images(db: Session = Depends(get_db)):
+    overrides = db.query(models.ImageOverride).all()
+    return {o.id: o.image_url for o in overrides}
+
+@app.post("/upload-image")
+def upload_image(
+    target_id: str = Form(...), 
+    file: UploadFile = File(...), 
+    current_user: models.User = Depends(auth.get_current_user), 
+    db: Session = Depends(get_db)
+):
+    if current_user.email != "eseeva228@gmail.com":
+        raise HTTPException(status_code=403, detail="Admin access required")
+    
+    ext = file.filename.split('.')[-1]
+    filename = f"{uuid.uuid4().hex}.{ext}"
+    filepath = os.path.join("data/uploads", filename)
+    
+    with open(filepath, "wb") as buffer:
+        shutil.copyfileobj(file.file, buffer)
+        
+    image_url = f"/api/uploads/{filename}"
+    
+    override = db.query(models.ImageOverride).filter(models.ImageOverride.id == target_id).first()
+    if override:
+        override.image_url = image_url
+    else:
+        override = models.ImageOverride(id=target_id, image_url=image_url)
+        db.add(override)
+    db.commit()
+    
+    return {"message": "Success", "image_url": image_url}

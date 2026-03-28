@@ -16,6 +16,7 @@ import Profile from './components/Profile'
 import Purchases from './components/Purchases'
 import Cart from './components/Cart'
 import { AuthProvider } from './context/AuthContext'
+import { ImageProvider } from './context/ImageContext'
 
 function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -67,8 +68,9 @@ function App() {
 
   return (
     <AuthProvider>
-      <div className="min-h-screen bg-background overflow-x-hidden">
-        <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} onNavigate={navigate} />
+      <ImageProvider>
+        <div className="min-h-screen bg-background overflow-x-hidden">
+          <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} onNavigate={navigate} />
         <Header onGoHome={handleGoHome} onNavigate={navigate} onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
         <main>
           {currentView === 'login' ? (
@@ -125,6 +127,7 @@ function App() {
           )}
         </main>
       </div>
+      </ImageProvider>
     </AuthProvider>
   )
 }

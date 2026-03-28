@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Camera } from 'lucide-react';
+import { Camera, Trash2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useImageOverrides } from '../context/ImageContext';
 
@@ -51,26 +51,64 @@ export default function AdminEditableImage({ targetId, defaultSrc, className, al
         }
     };
 
+    const handleDelete = async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if (!window.confirm("Restore original image?")) return;
+
+        try {
+            const res = await fetch(`/api/delete-image/${targetId}`, {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            if (res.ok) {
+                await refreshOverrides();
+            } else {
+                console.error("Delete failed");
+            }
+        } catch (err) {
+            console.error('Network error during deletion', err);
+        }
+    };
+
     return (
         <>
             <img src={currentSrc} alt={alt || targetId} className={className} loading="lazy" />
             {isAdmin && (
-                <div 
-                    onClick={handleClick}
-                    className="absolute top-4 right-4 z-50 bg-black/50 opacity-60 hover:opacity-100 flex items-center justify-center cursor-pointer transition-all duration-300 rounded-full p-3 shadow-[0_4px_20px_rgba(0,0,0,0.5)] border border-white/20 hover:scale-110 hover:bg-black/80"
-                    title="Change Photo (Admin only)"
-                >
-                    <Camera className="text-white w-6 h-6 drop-shadow-md" />
-                    {uploading && <span className="text-white ml-2 text-xs font-bold shadow-black drop-shadow-md">...</span>}
-                    <input 
-                        ref={fileInputRef}
-                        type="file" 
-                        accept="image/*" 
-                        className="hidden" 
-                        onChange={handleFileChange} 
-                        disabled={uploading}
-                        onClick={(e) => e.stopPropagation()} 
-                    />
+                <div className="absolute top-4 right-4 z-50 flex gap-2">
+                    {/* Camera Button */}
+                    <div 
+                        onClick={handleClick}
+                        className="bg-black/50 opacity-60 hover:opacity-100 flex items-center justify-center cursor-pointer transition-all duration-300 rounded-full p-3 shadow-[0_4px_20px_rgba(0,0,0,0.5)] border border-white/20 hover:scale-110 hover:bg-black/80"
+                        title="Change Photo"
+                    >
+                        <Camera className="text-white w-6 h-6 drop-shadow-md" />
+                        {uploading && <span className="text-white ml-2 text-xs font-bold shadow-black drop-shadow-md">...</span>}
+                        <input 
+                            ref={fileInputRef}
+                            type="file" 
+                            accept="image/*" 
+                            className="hidden" 
+                            onChange={handleFileChange} 
+                            disabled={uploading}
+                            onClick={(e) => e.stopPropagation()} 
+                        />
+                    </div>
+                    
+                    {/* Trash Button - Only visible if an override exists */}
+                    {overrides?.[targetId] && (
+                        <div 
+                            onClick={handleDelete}
+                            className="bg-rose-500/80 opacity-60 hover:opacity-100 flex items-center justify-center cursor-pointer transition-all duration-300 rounded-full p-3 shadow-[0_4px_20px_rgba(0,0,0,0.5)] border border-white/20 hover:scale-110 hover:bg-rose-600"
+                            title="Reset to Original"
+                        >
+                            <Trash2 className="text-white w-6 h-6 drop-shadow-md" />
+                        </div>
+                    )}
                 </div>
             )}
         </>

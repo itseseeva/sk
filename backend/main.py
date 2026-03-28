@@ -92,3 +92,29 @@ def upload_image(
     db.commit()
     
     return {"message": "Success", "image_url": image_url}
+
+@app.delete("/delete-image/{target_id}")
+def delete_image(
+    target_id: str,
+    current_user: models.User = Depends(auth.get_current_user), 
+    db: Session = Depends(get_db)
+):
+    if current_user.email != "eseeva228@gmail.com":
+        raise HTTPException(status_code=403, detail="Admin access required")
+    
+    override = db.query(models.ImageOverride).filter(models.ImageOverride.id == target_id).first()
+    if not override:
+        raise HTTPException(status_code=404, detail="Image override not found")
+        
+    try:
+        filename = override.image_url.split("/")[-1]
+        filepath = os.path.join("data/uploads", filename)
+        if os.path.exists(filepath):
+            os.remove(filepath)
+    except Exception as e:
+        print(f"Warning: Could not delete physical file: {e}")
+        
+    db.delete(override)
+    db.commit()
+    
+    return {"message": "Deleted"}

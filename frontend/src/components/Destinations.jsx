@@ -8,7 +8,7 @@ const destinations = [
     country: 'UAE',
     price: 280,
     tag: 'Hot deal',
-    image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=800',
+    image: '/articles/dubai1.jpg',
   },
   {
     id: 'bangkok',
@@ -16,7 +16,7 @@ const destinations = [
     country: 'Thailand',
     price: 420,
     tag: 'Popular',
-    image: 'https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&q=80&w=800',
+    image: '/articles/bangkok1.jpg',
   },
   {
     id: 'barcelona',
@@ -24,7 +24,7 @@ const destinations = [
     country: 'Spain',
     price: 95,
     tag: null,
-    image: 'https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&q=80&w=800',
+    image: '/articles/barri.jpg',
   },
   {
     id: 'tokyo',
@@ -32,7 +32,7 @@ const destinations = [
     country: 'Japan',
     price: 590,
     tag: null,
-    image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&q=80&w=800',
+    image: '/articles/shibuya1.jpg',
   },
   {
     id: 'rome',
@@ -40,7 +40,7 @@ const destinations = [
     country: 'Italy',
     price: 79,
     tag: 'Hot deal',
-    image: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&q=80&w=800',
+    image: '/articles/colosseum2.jpg',
   },
   {
     id: 'new_york',
@@ -48,7 +48,7 @@ const destinations = [
     country: 'USA',
     price: 340,
     tag: null,
-    image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&q=80&w=800',
+    image: '/articles/cabs2.jpg',
   },
 ];
 

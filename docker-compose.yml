@@ -13,11 +13,13 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt:ro
     restart: unless-stopped
 
-# Если в будущем появится бэкенд на Python:
-#  backend:
-#    build:
-#      context: ./backend
-#    container_name: flight_search_backend
-#    ports:
-#      - "5000:5000"
-#    restart: unless-stopped
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: flight_search_backend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend/data:/app/data
+    restart: unless-stopped

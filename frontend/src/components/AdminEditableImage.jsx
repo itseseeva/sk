@@ -57,11 +57,11 @@ export default function AdminEditableImage({ targetId, defaultSrc, className, al
             {isAdmin && (
                 <div 
                     onClick={handleClick}
-                    className="absolute inset-0 z-50 bg-black/50 opacity-0 hover:opacity-100 flex items-center justify-center cursor-pointer transition-opacity"
+                    className="absolute top-4 right-4 z-50 bg-black/50 opacity-60 hover:opacity-100 flex items-center justify-center cursor-pointer transition-all duration-300 rounded-full p-3 shadow-[0_4px_20px_rgba(0,0,0,0.5)] border border-white/20 hover:scale-110 hover:bg-black/80"
                     title="Change Photo (Admin only)"
                 >
-                    <Camera className="text-white w-10 h-10 drop-shadow-lg" />
-                    {uploading && <span className="text-white ml-3 text-sm font-bold shadow-black drop-shadow-md">Uploading...</span>}
+                    <Camera className="text-white w-6 h-6 drop-shadow-md" />
+                    {uploading && <span className="text-white ml-2 text-xs font-bold shadow-black drop-shadow-md">...</span>}
                     <input 
                         ref={fileInputRef}
                         type="file" 

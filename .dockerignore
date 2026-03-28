@@ -30,3 +30,7 @@ Dockerfile
 .env
 .DS_Store
 README.md
+
+# Данные, которые монтируются через Volume
+backend/data/
+*.db

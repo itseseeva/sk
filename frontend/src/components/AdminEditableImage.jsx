@@ -3,7 +3,7 @@ import { Camera, Trash2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useImageOverrides } from '../context/ImageContext';
 
-export default function AdminEditableImage({ targetId, defaultSrc, className, alt }) {
+export default function AdminEditableImage({ targetId, defaultSrc, className, alt, isActive = true }) {
     const { user, token } = useAuth();
     const { overrides, refreshOverrides } = useImageOverrides();
     const [uploading, setUploading] = useState(false);
@@ -78,7 +78,7 @@ export default function AdminEditableImage({ targetId, defaultSrc, className, al
     return (
         <>
             <img src={currentSrc} alt={alt || targetId} className={className} loading="lazy" />
-            {isAdmin && (
+            {isAdmin && isActive && (
                 <div className="absolute top-4 right-4 z-50 flex gap-2">
                     {/* Camera Button */}
                     <div 

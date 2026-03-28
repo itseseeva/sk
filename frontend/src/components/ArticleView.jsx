@@ -41,6 +41,7 @@ function FullWidthSlider({ images, caption, articleId, blockIdx }) {
             targetId={`${articleId}_content_${blockIdx}_${i}`}
             defaultSrc={img} 
             alt={caption} 
+            isActive={i === currentIndex}
             className={`absolute inset-0 w-full h-full object-cover shadow-2xl transition-opacity duration-1000 ${i === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`} 
           />
         )) : (
